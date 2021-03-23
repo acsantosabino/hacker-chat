@@ -85,22 +85,5 @@ export default class TerminalController {
     this.#registerEvents(eventEmitter, components)
     components.input.focus()
     components.screen.render()
-
-    setInterval(() => {
-      const users = [];
-      eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "tester1 join")
-      users.push("tester1")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "tester2 join")
-      users.push("tester2")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "tester3 join")
-      users.push("tester3")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {username:"tester1", message:"hello world!!"})
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {username:"tester2", message:"hello world!!"})
-      eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "tester1 left")
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {username:"tester3", message:"hello world!!"})
-    }, 1000)
   }
 }
